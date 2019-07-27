@@ -90,8 +90,9 @@ class view_contact_page(TemplateView):
                 sender_name = form.cleaned_data['name']
                 sender_email = form.cleaned_data['email']
                 message = "{0} has sent you a new message:\n\n{1}".format(sender_name, form.cleaned_data['message'])
-                send_mail('New Enquiry', message, sender_email,['admin@example.com'] )
+                send_mail('New Enquiry', message, sender_email, ['admin@example.com'])
         else:
             form = ContactForm()
 
         return render(request, 'home/contact.html', {'form': form})
+

@@ -1,5 +1,6 @@
 from django.db import models
 from django.db.models.query import QuerySet
+
 from django_group_by import GroupByMixin
 #
 # from django.db import models
@@ -91,8 +92,8 @@ class Personal_Detail(models.Model):
 class Interest(models.Model):
     title = models.CharField(max_length=200)
     summary = models.TextField()
-    bg_img = models.ImageField(upload_to='content/media/Images/Interests/')
-    link = models.URLField(verbose_name='URL to the Interests Page')
+    bg_img = models.ImageField(upload_to='content/media/Images/Interests/', null=True, blank=True)
+    link = models.URLField(verbose_name='URL to the Interests Page', null=True, blank=True)
 
     def __str__(self):
         return self.title
@@ -168,10 +169,10 @@ class Personal_Blog(models.Model):
 
 class Image(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='content/media/Site-Data/Images/')
+    image = models.ImageField(upload_to='content/media/Site-Data/Images/', null=True, blank=True)
 
 
 class File(models.Model):
     title = models.CharField(max_length=200)
-    file = models.FileField(upload_to='content/media/Site-Data/Images/')
+    file = models.FileField(upload_to='content/media/Site-Data/Images/', null=True, blank=True)
 
