@@ -1,6 +1,5 @@
 from django.db import models
 from django.db.models.query import QuerySet
-from django_group_by import GroupByMixin
 #
 # from django.db import models
 # from django.utils import timezone
@@ -30,11 +29,8 @@ from django_group_by import GroupByMixin
 
 # About Section
 
-class BookQuerySet(QuerySet, GroupByMixin):
-    pass
 
 class TimeLine(models.Model):
-    objects = BookQuerySet.as_manager()
     PRIVACY_OPTIONS = (
         ('public', 'Public'),
         ('mid', 'Email-Identification-Required'),
@@ -91,8 +87,8 @@ class Personal_Detail(models.Model):
 class Interest(models.Model):
     title = models.CharField(max_length=200)
     summary = models.TextField()
-    bg_img = models.ImageField(upload_to='content/media/Images/Interests/', null=True, blank=True)
-    link = models.URLField(verbose_name='URL to the Interests Page', null=True, blank=True)
+    bg_img = models.ImageField(upload_to='content/media/Images/Interests/')
+    link = models.URLField(verbose_name='URL to the Interests Page')
 
     def __str__(self):
         return self.title
@@ -168,12 +164,12 @@ class Personal_Blog(models.Model):
 
 class Image(models.Model):
     title = models.CharField(max_length=200)
-    image = models.ImageField(upload_to='content/media/Site-Data/Images/', null=True, blank=True)
+    image = models.ImageField(upload_to='content/media/Site-Data/Images/')
 
 
 class File(models.Model):
     title = models.CharField(max_length=200)
-    file = models.FileField(upload_to='content/media/Site-Data/Images/', null=True, blank=True)
+    file = models.FileField(upload_to='content/media/Site-Data/Images/')
 
 class Comment(models.Model):
     sender = models.CharField(max_length=100)
