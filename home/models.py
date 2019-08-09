@@ -1,6 +1,5 @@
 from django.db import models
 from django.db.models.query import QuerySet
-
 from django_group_by import GroupByMixin
 #
 # from django.db import models
@@ -176,3 +175,23 @@ class File(models.Model):
     title = models.CharField(max_length=200)
     file = models.FileField(upload_to='content/media/Site-Data/Images/', null=True, blank=True)
 
+class Comment(models.Model):
+    sender = models.CharField(max_length=100)
+    caption = models.TextField()
+    img = models.URLField(null=True, blank=True)
+    ved = models.URLField(null=True, blank=True)
+    url_caption = models.CharField(max_length=100, null=True, blank=True)
+    link = models.URLField(null=True, blank=True)
+
+    posted_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.sender
+
+class Contact(models.Model):
+    name = models.CharField(max_length=100)
+    email = models.EmailField()
+    message = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name
